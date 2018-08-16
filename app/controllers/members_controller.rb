@@ -1,16 +1,16 @@
 class MembersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def new
-    @user = User.new
+    @member = Member.new
   end
 
   private
-   def set_user
-     @user = User.find(params[:id])
+   def set_member
+     @member = Member.find(params[:id])
    end
 
-   def user_params
+   def member_params
      params.require(:user).permit(
        :name,
        :email,
