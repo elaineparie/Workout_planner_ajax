@@ -1,4 +1,9 @@
 class MembersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  def new
+    @user = User.new
+  end
 
   private
    def set_user
