@@ -16,19 +16,29 @@ DATA = {
     ["Rebecca Tinkham", "imrebecca@hotmail.com", "password"],
   ],
   :exercise_keys =>
-   ["name", "type", "points"],
+   ["name", "kind", "points"],
   :exercises => [
     ["Run 20 mins", "cardio", 10],
     ["3 sets of squats", "lower body", 15],
     ["push ups", "upper body", 10],
     ["Jumping Jacks", "cardio", 8],
     ["Crunches", "abs", 7]
+  ],
+
+  :workout_keys =>
+   ["name", "points"],
+  :workouts => [
+    ["Morning workout", 60],
+    ["Light day", 30],
+    ["upper body", 40],
+    ["lower body", 80]
   ]
 }
 
 def main
   make_members
   make_exercises_and_workouts
+  make_workouts
 end
 
 def make_members
@@ -45,7 +55,7 @@ def make_exercises_and_workouts
   DATA[:exercises].each do |exercise|
     new_exercise = Exercise.new
     exercise.each_with_index do |attribute, i|
-      new_exercise.send(DATA[:exercise_keys][i] + "=", attribute)
+    new_exercise.send(DATA[:exercise_keys][i] + "=", attribute)
     end
     rand(1..8).times do
       members = []
@@ -56,5 +66,17 @@ def make_exercises_and_workouts
     new_exercise.save
   end
 end
+
+def make_workouts
+  DATA[:workouts].each do |workout|
+    new_workout = Workout.new
+    workout.each_with_index do |attribute, i|
+    new_workout.send(DATA[:workout_keys][i]+"=", attribute)
+    end
+    new_workout.save
+  end
+end
+
+
 
 main
