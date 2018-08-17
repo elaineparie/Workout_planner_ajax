@@ -3,16 +3,14 @@
 <br>
 <%= f.text_field :name %>
 <br>
-<%= f.label :type %>
+<%= f.label :kind %>
 <br>
-<%= f.text_field :type %>
+<%= f.text_field :kind %>
 <br>
 <%= f.label :name, "Select which workout you'd like to add this exercise to" %><br>
     <%= f.collection_select(:id, @routines, :id, :name) %>
 <br>
-<%= f.label :points %>
-<br>
-<%= f.text_field :points %>
+
 <%= f.submit %>
 
 <% end %>

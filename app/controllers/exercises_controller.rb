@@ -11,6 +11,7 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+    @routines = Routine.all
   end
 
   def edit
@@ -34,7 +35,7 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(
       :name,
-      :type
+      :kind
     )
   end
 

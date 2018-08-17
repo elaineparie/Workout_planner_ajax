@@ -1,3 +1,4 @@
-<%@workouts.each do |workout|%>
-<%=workout.name%>
+<%@routines.each do |routine|%>
+<a link_to routine_path(routine)><%=routine.name%></a>
+
 <%end%>

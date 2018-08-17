@@ -3,10 +3,6 @@
 <br>
 <%= f.text_field :name %>
 <br>
-<%= f.label :points %>
-<br>
-<%= f.text_field :points %>
-<br>
  <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
  <%= f.label :kind %>
  <br>
