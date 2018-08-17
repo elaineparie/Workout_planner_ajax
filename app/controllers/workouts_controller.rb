@@ -1,8 +1,9 @@
 class WorkoutsController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :index]
+  #before_action :set_workout, only: [:show, :edit, :update, :destroy, :index]
 
   def index
     @workouts = Workout.all
+    binding.pry
   end
 
   def create
@@ -16,9 +17,9 @@ class WorkoutsController < ApplicationController
 end
 
 private
-def set_workout
-  @workout = Workout.find(params[:id])
-end
+#def set_workout
+#  @workout = Workout.find(params[:id])
+#end
 
 def workout_params
   params.require(:workout).permit(
