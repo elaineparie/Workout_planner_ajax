@@ -6,11 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-DATA = {
-  :member_keys =>
-    ["name", "email", "password"],
-  :members => [
-    ["Elaine Anderson", "eparie@bu.edu", "hithere"],
+
+    members = Member.create([{ name:"Elaine Anderson", email: 'eparie@bu.edu', password: 'password' }, { name:"Gab Gilbert", email: 'imgab@yahoo.com', password: 'password' }, { name:"Mack Kinnon", email: 'immackenzie@gmail.com', password: 'password' }])
+    Routine.create
     ["Gabbi Gilbert", "imgabbi@yahoo.com", "password"],
     ["Mackenzie Kinnon", "immackenzie@gmail.com", "password"],
     ["Rebecca Tinkham", "imrebecca@hotmail.com", "password"],

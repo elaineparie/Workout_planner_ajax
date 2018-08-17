@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 resources :members
 resources :exercises
 resources :workouts
+resources :routines
 end

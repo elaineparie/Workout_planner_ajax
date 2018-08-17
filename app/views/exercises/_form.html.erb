@@ -7,6 +7,9 @@
 <br>
 <%= f.text_field :type %>
 <br>
+<%= f.label :name, "Select which workout you'd like to add this exercise to" %><br>
+    <%= f.collection_select(:id, @routines, :id, :name) %>
+<br>
 <%= f.label :points %>
 <br>
 <%= f.text_field :points %>
