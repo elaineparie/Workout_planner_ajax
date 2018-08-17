@@ -19,7 +19,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
       if @exercise.save
-        redirect_to @attraction
+        redirect_to exercise_path(@exercise)
       else
         render :new
       end
