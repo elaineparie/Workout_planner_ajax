@@ -3,7 +3,6 @@ class WorkoutsController < ApplicationController
 
 
   def new
-  
   end
 
 
