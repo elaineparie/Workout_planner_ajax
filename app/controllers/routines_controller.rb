@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-before_action :set_routine, only: [:show, :edit, :update, :destroy, :index]
+before_action :set_routine, only: [:show, :edit, :update, :destroy]
   def new
     @routine = Routine.new
     @exercises = Exercise.all
@@ -14,13 +14,17 @@ else
   end
 end
 
+def index
+  @routines = Routine.all
+end
+
   def show
   end
 
   private
 
   def set_routine
-    @exercise = Exercise.find(params[:id])
+    @routine = Routine.find(params[:id])
   end
 
     def routine_params

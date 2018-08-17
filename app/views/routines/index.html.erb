@@ -1,4 +1,4 @@
 <%@routines.each do |routine|%>
-<a link_to routine_path(routine)><%=routine.name%></a>
+<%=link_to "#{routine.name}", routine_path(routine)%>
 
 <%end%>
