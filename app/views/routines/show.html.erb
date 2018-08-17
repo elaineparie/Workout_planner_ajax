@@ -1,5 +1,10 @@
-<%=@routine.name%>
-<%=@routine.kind%>
+<h3><%=@routine.name%></h3>
+<p>*<%=@routine.kind%><br></p>
+<ol>
 <%@routine.exercises.each do |exercise|%>
-<%=exercise.name%>
+<li><%=exercise.name%></li>
+<%=exercise.sets%>
+<%=exercise.reps%>
+<%=exercise.lbs%>
 <%end%>
+</ol>

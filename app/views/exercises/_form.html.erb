@@ -7,6 +7,18 @@
 <br>
 <%= f.text_field :kind %>
 <br>
+<%= f.label :sets %>
+<br>
+<%= f.text_field :sets %>
+<br>
+<%= f.label :reps %>
+<br>
+<%= f.text_field :reps %>
+<br>
+<%= f.label :lbs %>
+<br>
+<%= f.text_field :lbs %>
+
 <%= f.label :name, "Select which workout you'd like to add this exercise to" %><br>
     <%= f.collection_select(:id, @routines, :id, :name) %>
 <br>
