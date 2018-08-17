@@ -1,5 +1,8 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :index]
+
+def index
+end
 
   def new
     @member = Member.new
@@ -8,7 +11,7 @@ class MembersController < ApplicationController
   def create
    @member = Member.new(member_params)
      if @member.save
-       session[:user_id] = @member.id
+       session[:member_id] = @member.id
        redirect_to member_path(@member)
      else
        render :new

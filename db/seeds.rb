@@ -31,35 +31,29 @@ def main
   make_exercises_and_workouts
 end
 
-def make_users
-  DATA[:users].each do |user|
-    new_user = User.new
-    user.each_with_index do |attribute, i|
-      new_user.send(DATA[:user_keys][i]+"=", attribute)
+def make_members
+  DATA[:members].each do |member|
+    new_member = Member.new
+    member.each_with_index do |attribute, i|
+      new_member.send(DATA[:member_keys][i]+"=", attribute)
     end
-    new_user.save
+    new_member.save
   end
 end
 
-def make_admin
-  DATA[:admins].each do |name|
-    User.create(name: name, admin: true, password: 'password')
-  end
-end
-
-def make_attractions_and_rides
-  DATA[:attractions].each do |attraction|
-    new_attraction = Attraction.new
-    attraction.each_with_index do |attribute, i|
-      new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
+def make_exercises_and_workouts
+  DATA[:exercises].each do |exercise|
+    new_exercise = Exercise.new
+    exercise.each_with_index do |attribute, i|
+      new_exercise.send(DATA[:exercise_keys][i] + "=", attribute)
     end
     rand(1..8).times do
-      customers = []
-      User.all.each {|u| customers << u if u.admin != true}
-      new_attraction.users << customers[rand(0...customers.length)]
+      members = []
+      Member.all.each {|u| members << u}
+      new_exercise.members << members[rand(0...members.length)]
     end
-    new_attraction.users.each {|c| c.save}
-    new_attraction.save
+    new_exercise.members.each {|c| c.save}
+    new_exercise.save
   end
 end
 
