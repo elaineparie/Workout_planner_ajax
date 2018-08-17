@@ -24,7 +24,7 @@ end
   end
 
     def routine_params
-      params.require(:routine).permit(:name, :kind, :points, exercise_ids:[], exercise_attributes: [:name, :points, :kind])
+      params.require(:routine).permit(:name, :kind, exercise_ids:[], exercise_attributes: [:name, :points, :kind])
     end
 
 end
