@@ -17,7 +17,8 @@
 <br>
 
 <%= f.label "What kind of workout is this?" %><br>
-     <%= f.collection_select :kind, Exercise.all, :kind, :kind, {:include_blank => "Select workout type"}%>
+<%binding.pry%>
+     <%= f.collection_select :kind, Exercise.select(:kind).uniq, :kind, :kind, {:include_blank => "Select workout type"}%>
 <br>
 
 <%= f.submit %>
