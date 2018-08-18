@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
   def create
     @member = Member.find_by(email: params[:member][:email])
-    if @member && @member.authenticate(params[:member][:password])
+    if @member && @member.authenticate(session_params[:password])
       session[:member_id] = @member.id
       redirect_to member_path(@member)
     else
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-      params.require(:session).permit(:email, :password)
+      params.require(:member).permit(:email, :password)
   end
 
 end
