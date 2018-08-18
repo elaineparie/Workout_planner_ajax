@@ -6,4 +6,5 @@ resources :exercises
 resources :workouts
 resources :routines
  get "/login", to: "sessions#new"
+ post "/sessions/create", to: "sessions#create"
 end

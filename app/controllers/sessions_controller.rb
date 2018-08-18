@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
   def new
     @member = Member.new
-    @members = Member.all
   end
 
   def create
