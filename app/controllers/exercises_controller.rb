@@ -11,8 +11,8 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
-    @routines = Routine.all
   end
+
 
   def edit
   end
