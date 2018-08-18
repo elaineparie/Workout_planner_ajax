@@ -2,9 +2,11 @@
 <p>*<%=@routine.kind%><br></p>
 <ol>
 <%@routine.exercises.each do |exercise|%>
-<li><%=exercise.name%></li>
-<%=exercise.sets%>
-<%=exercise.reps%>
-<%=exercise.lbs%>
+<li><%=exercise.name%></li><br>
+<p>sets: <%=exercise.sets%></p>
+<p>reps: <%=exercise.reps%></p>
+<%if exercise.lbs != nil%>
+<p>weight: <%=exercise.lbs%></p>
+<%end%>
 <%end%>
 </ol>

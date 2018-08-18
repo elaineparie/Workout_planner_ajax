@@ -5,4 +5,5 @@ resources :members
 resources :exercises
 resources :workouts
 resources :routines
+ get "/login", to: "sessions#new"
 end
