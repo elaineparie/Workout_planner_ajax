@@ -1,3 +1,4 @@
+<%=link_to "Home", member_path(current_member)%>
 <%= form_for @exercise do |f| %>
 <%= f.label :name %>
 <br>
@@ -17,7 +18,6 @@
 <br>
 
 <%= f.label "What kind of workout is this?" %><br>
-<%binding.pry%>
      <%= f.collection_select :kind, Exercise.select(:kind).uniq, :kind, :kind, {:include_blank => "Select workout type"}%>
 <br>
 

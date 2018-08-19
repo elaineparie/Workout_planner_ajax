@@ -1,9 +1,10 @@
+<%=link_to "Home", member_path(current_member)%>
 <%= form_for @routine do |f| %>
 <%= f.label :name %>
 <br>
 <%= f.text_field :name %>
 <br>
- <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
+
  <%= f.label :kind %>
  <br>
   <%= f.text_field :kind%>

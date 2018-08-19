@@ -7,12 +7,13 @@ before_action :set_routine, only: [:show, :edit, :update, :destroy]
 
   def create
   @routine = Routine.new(routine_params)
-  if @routine.save
-  redirect_to routine_path(@routine)
-else
-  render new_routine_path
+  binding.pry
+    if @routine.save
+    redirect_to routine_path(@routine)
+    else
+    render new_routine_path
+    end
   end
-end
 
 def index
   @routines = Routine.all
@@ -28,7 +29,7 @@ end
   end
 
     def routine_params
-      params.require(:routine).permit(:name, :kind, exercise_ids:[], exercise_attributes: [:name, :points, :kind, :sets, :reps, :lbs])
+      params.require(:routine).permit(:name, :kind, exercise_ids:[], exercise_attributes: [:name, :kind, :sets, :reps, :lbs])
     end
 
 end
