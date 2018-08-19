@@ -15,7 +15,8 @@ before_action :set_routine, only: [:show, :edit, :update, :destroy]
   end
 
 def index
-  @routines = Routine.all
+  binding.pry
+  @routines = current_member.routines
 end
 
   def show
