@@ -8,6 +8,8 @@
  <%= f.label :kind %>
  <br>
   <%= f.text_field :kind%>
+  <br>
+  <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
  <br>
 <%= f.submit %>
 

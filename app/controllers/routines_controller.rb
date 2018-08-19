@@ -7,7 +7,6 @@ before_action :set_routine, only: [:show, :edit, :update, :destroy]
 
   def create
   @routine = Routine.new(routine_params)
-  binding.pry
     if @routine.save
     redirect_to routine_path(@routine)
     else
