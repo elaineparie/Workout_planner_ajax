@@ -4,7 +4,10 @@ root 'static_pages#home'
 resources :members
 resources :exercises
 resources :workouts
-resources :routines
+resources :routines do
+  resources :exercises
+end
+
  get "/login", to: "sessions#new"
  post "/sessions/create", to: "sessions#create"
  get "/all_routines", to: "routines#all_routines"
