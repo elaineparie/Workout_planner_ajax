@@ -7,4 +7,5 @@ resources :workouts
 resources :routines
  get "/login", to: "sessions#new"
  post "/sessions/create", to: "sessions#create"
+ get "/all_routines", to: "routines#all_routines"
 end

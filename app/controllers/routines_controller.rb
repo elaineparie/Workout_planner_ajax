@@ -22,6 +22,10 @@ class RoutinesController < ApplicationController
   def show
   end
 
+  def all_routines
+    @routines = Routine.all
+  end
+
   private
 
   def set_routine
