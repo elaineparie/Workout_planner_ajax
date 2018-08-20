@@ -1,5 +1,6 @@
 class Member < ApplicationRecord
   has_secure_password
-  has_many :workouts 
+  has_many :workouts
   has_many :routines, through: :workouts
+  validates :name, presence: true
 end

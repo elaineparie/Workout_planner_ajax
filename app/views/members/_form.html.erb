@@ -1,4 +1,18 @@
-<%=link_to "Home", member_path(current_member)%>
+<% if @member.errors.any? %>
+  <div id="error_explanation">
+    <p>
+      <%= pluralize(@member.errors.count, "error") %>
+      prohibited this member from being saved:
+    </p>
+
+    <ul>
+    <% @member.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%=link_to "Logout", logout_url%>
   <%= form_for @member do |f| %>
   <%= f.label :name %>

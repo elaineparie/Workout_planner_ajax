@@ -1,3 +1,18 @@
+<% if @routine.errors.any? %>
+  <div id="error_explanation">
+    <p>
+      <%= pluralize(@routine.errors.count, "error") %>
+      prohibited this routine from being saved:
+    </p>
+
+    <ul>
+    <% @routine.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%=link_to "Home", member_path(current_member)%><br>
 <%=link_to "Logout", logout_url%>
 <%= form_for @routine do |f| %>
