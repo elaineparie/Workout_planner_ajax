@@ -15,6 +15,17 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @routine.update(routine_params)
+      redirect_to routine_path(@routine)
+    else
+      render :edit
+    end
+  end
+
   def index
     @routines = current_member.routines
   end
