@@ -8,4 +8,6 @@ resources :routines
  get "/login", to: "sessions#new"
  post "/sessions/create", to: "sessions#create"
  get "/all_routines", to: "routines#all_routines"
+ get '/auth/facebook/callback' => 'sessions#create'
+ get '/privatepolicyfb' => 'static_pages#privatepolicyfb'
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_201447) do
+ActiveRecord::Schema.define(version: 2018_08_20_120146) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_08_19_201447) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.integer "uid"
+    t.binary "image"
   end
 
   create_table "routine_exercises", force: :cascade do |t|
