@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def new
+    render :layout => false
     @member = Member.new
   end
 
