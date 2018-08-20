@@ -1,4 +1,4 @@
-<%=link_to "Home", member_path(current_member)%>
+
 <br>
 <%@routines.each do |routine|%>
 <%=link_to "#{routine.name}", routine_path(routine)%><br>
