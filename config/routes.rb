@@ -10,5 +10,5 @@ resources :routines
  get "/all_routines", to: "routines#all_routines"
  get '/auth/facebook/callback' => 'sessions#create'
  get '/privatepolicyfb' => 'static_pages#privatepolicyfb'
- delete '/logout' => 'sessions#destroy'
+ get '/logout' => 'sessions#destroy'
 end

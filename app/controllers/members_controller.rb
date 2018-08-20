@@ -18,6 +18,17 @@ end
      end
    end
 
+   def edit
+   end
+
+   def update
+     if @member.update(member_params)
+       redirect_to member_path(@member)
+     else
+       render :edit
+     end
+   end
+
    def show
    end
 
