@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def new
-    render :layout => false
     @member = Member.new
   end
 
@@ -14,7 +13,8 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
        oauth_email = request.env["omniauth.auth"]["info"]["email"]
        oauth_name = request.env["omniauth.auth"]["info"]["name"]
-       if member = Member.find_by(:name => oauth_name)
+       member = Member.find_by(:name => oauth_name)
+        if member
          session[:member_id] = member.id
          render member_path(member)
        else
@@ -24,12 +24,12 @@ class SessionsController < ApplicationController
          render member_path(member)
        end
      else
-       member = Member.find_by(:email => params[:email])
-       if member && member.authenticate(params[:password])
-         session[:member_id] == member.id
-         redirect to root_path
+       member = Member.find_by(:email => params[:member][:email])
+       if member && member.authenticate(params[:member][:password])
+         session[:member_id] = member.id
+         redirect_to member_path(member)
        else
-         render login_path
+         redirect_to login_path
        end
      end
    end

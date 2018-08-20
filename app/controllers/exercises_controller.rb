@@ -13,7 +13,6 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
   end
 
-
   def edit
   end
 
@@ -25,6 +24,16 @@ class ExercisesController < ApplicationController
         render :new
       end
     end
+
+    def update
+    if @exercise.update(exercise_params)
+      redirect_to exercise_path(@exercise)
+    else
+      render :edit
+    end
+  end
+
+
 
 
   private
