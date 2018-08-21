@@ -11,6 +11,8 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+    @exercises = Exercise.all.map{|exercise|exercise.kind}
+    @exercises = @exercises.compact.uniq
   end
 
   def edit
