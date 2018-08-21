@@ -6,10 +6,11 @@ class RoutinesController < ApplicationController
   end
 
   def create
-    binding.pry
   @routine = Routine.new(routine_params)
     if @routine.save
       current_member.routines << @routine
+      @workout = Workout.new(:member_id => current_member.id, :routine_id => @routine.id, :level => workout_params[:level])
+      @workout.save
     redirect_to routine_path(@routine)
     else
     render new_routine_path
@@ -45,7 +46,11 @@ class RoutinesController < ApplicationController
   end
 
   def routine_params
-    params.require(:routine).permit(:name, :kind, exercise_ids:[], exercise_attributes: [:name, :kind, :sets, :reps, :lbs], workout_ids:[], workout_attributes: [:level])
+    params.require(:routine).permit(:name, :kind, exercise_ids:[], exercise_attributes: [:name, :kind, :sets, :reps, :lbs], workout_attributes: [:level])
+  end
+
+  def workout_params
+    params.require(:workout).permit(:level)
   end
 
 end
