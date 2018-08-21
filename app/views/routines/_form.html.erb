@@ -26,7 +26,14 @@
   <%= f.text_field :kind%>
   <br>
   <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
- <br>
+
+  <%= f.label "What level workout is this?" %><br>
+  <select name="workout[level]" id="workout_level"><option value="">Select workout level</option>
+  <option value="easy">easy</option>
+  <option value="medium">medium</option>
+  <option value="hard">hard</option>
+  </select>
+  <br>
 <%= f.submit %>
 
 <% end %>

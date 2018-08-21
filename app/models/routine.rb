@@ -4,6 +4,7 @@ class Routine < ApplicationRecord
   has_many :routine_exercises
   has_many :exercises, :through => :routine_exercises
   accepts_nested_attributes_for :exercises
+    accepts_nested_attributes_for :workouts
   validates :name, presence: true
   validates :kind, presence: true
 end
