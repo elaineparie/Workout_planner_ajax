@@ -1,5 +1,7 @@
-<%=link_to "Home", member_path(current_member)%>
-<%=link_to "Logout", logout_url%>
-<%@routines.each do |routine|%>
+<%=link_to "Home", member_path(current_member)%><br>
+<%=link_to "Logout", logout_url%><br>
+<br>
+<br>
+<%=Routine.lower_body_routines.each do |routine|%>
 <%=link_to routine.name, routine_path(routine)%><br>
 <%end%>

@@ -21,9 +21,15 @@
 <%= f.text_field :name %>
 <br>
 
- <%= f.label :kind %>
- <br>
-  <%= f.text_field :kind%>
+<%= f.label "What kind of routine is this?" %><br>
+<select name="routine[kind]" id="routine_kind"><option value="">Select workout type</option>
+<option value="upper body ">upper body </option>
+<option value="abs">abs</option>
+<option value="lower body">lower body</option>
+<option value="cardio">cardio</option>
+<option value="full body">full body</option>
+</select>
+<br>
   <br>
   <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
 
