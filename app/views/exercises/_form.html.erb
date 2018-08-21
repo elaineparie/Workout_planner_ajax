@@ -1,4 +1,4 @@
-<%binding.pry%>
+
 
 
 <% if @exercise.errors.any? %>
@@ -36,7 +36,11 @@
 <br>
 
 <%= f.label "What kind of workout is this?" %><br>
-     <%= f.collection_select :kind, Exercise.select(:kind).uniq, :kind, :kind, {:include_blank => "Select workout type"}%>
+<select name="exercise[kind]" id="exercise_kind"><option value="">Select workout type</option>
+<option value="upper body ">upper body </option>
+<option value="abs">abs</option>
+<option value="lower body">lower body</option>
+<option value="cardio">cardio</option></select>
 <br>
 
 <%= f.submit %>
