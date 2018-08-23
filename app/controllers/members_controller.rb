@@ -30,7 +30,6 @@ end
    end
 
    def show
-     binding.pry
    end
 
   private

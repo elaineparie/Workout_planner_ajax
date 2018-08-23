@@ -7,9 +7,9 @@ class RoutinesController < ApplicationController
 
   def create
   @routine = Routine.new(routine_params)
+  @routine.member = current_member
     if @routine.save
-      current_member.routines << @routine
-      @workout = Workout.new(:member_id => current_member.id, :routine_id => @routine.id, :level => workout_params[:level])
+      @workout = Workout.new(:routine_id => @routine.id, :level => workout_params[:level])
       @workout.save
     redirect_to routine_path(@routine)
     else
