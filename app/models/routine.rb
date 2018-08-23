@@ -9,23 +9,23 @@ class Routine < ApplicationRecord
   validates :kind, presence: true
 
   def self.upper_body_routines
-    self.where(kind: 'upper body')
+    where(kind: 'upper body')
   end
 
   def self.lower_body_routines
-    self.where(kind: 'lower body')
+    where(kind: 'lower body')
   end
 
   def self.cardio_routines
-    self.where(kind: 'cardio')
+    where(kind: 'cardio')
   end
 
   def self.ab_routines
-    self.where(kind: 'abs')
+    where(kind: 'abs')
   end
 
   def self.full_body_routines
-    self.where(kind: 'full body')
+    where(kind: 'full body')
   end
 
 end

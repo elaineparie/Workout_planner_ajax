@@ -2,6 +2,24 @@
 <%=link_to "Logout", logout_url%><br>
 <br>
 <br>
-<%=Routine.lower_body_routines.each do |routine|%>
+
+<p>Full Body Routines:</p><br>
+<%Routine.all.full_body_routines.each do |routine|%>
+<%=link_to routine.name, routine_path(routine)%><br>
+<%end%>
+<p>Lower Body Routines:</p><br>
+<%Routine.all.lower_body_routines.each do |routine|%>
+<%=link_to routine.name, routine_path(routine)%><br>
+<%end%>
+<p>Upper Body Routines:</p><br>
+<%Routine.all.upper_body_routines.each do |routine|%>
+<%=link_to routine.name, routine_path(routine)%><br>
+<%end%>
+<p>Cardio Routines:</p><br>
+<%Routine.all.cardio_routines.each do |routine|%>
+<%=link_to routine.name, routine_path(routine)%><br>
+<%end%>
+<p>Ab Routines:</p><br>
+<%Routine.all.ab_routines.each do |routine|%>
 <%=link_to routine.name, routine_path(routine)%><br>
 <%end%>
