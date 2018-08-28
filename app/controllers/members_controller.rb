@@ -21,6 +21,10 @@ end
    def edit
    end
 
+   def routines_index
+    @routines = current_member.routines
+   end
+
    def update
      if @member.update(member_params)
        redirect_to member_path(@member)

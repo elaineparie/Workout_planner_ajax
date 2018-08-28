@@ -29,14 +29,10 @@ class RoutinesController < ApplicationController
   end
 
   def index
-    @routines = current_member.routines
+    @routines = Routine.all
   end
 
   def show
-  end
-
-  def all_routines
-    @routines = Routine.all
   end
 
   private
