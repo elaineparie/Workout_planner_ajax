@@ -13,15 +13,17 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
        oauth_email = request.env["omniauth.auth"]["info"]["email"]
        oauth_name = request.env["omniauth.auth"]["info"]["name"]
-       member = Member.find_by(:name => oauth_name)
-        if member
+       oauth_uid = request.env["omniauth.auth"]["uid"]
+       oauth_password = request.env["omniauth.auth"]["extra"]["raw_info"]["id"]
+        if Member.find_by(:email => oauth_email) != nil
+          member = Member.find_by(:email => oauth_email)
          session[:member_id] = member.id
-         render member_path(member)
+         redirect_to member_path(member)
        else
-         member = Member.create(:email => oauth_email, :name => oauth_name)
+         member = Member.create(:email => oauth_email, :name => oauth_name, :uid => oauth_uid, :password => oauth_password)
          oauth_email
          session[:member_id] = member.id
-         render member_path(member)
+         redirect_to member_path(member)
        end
      else
        member = Member.find_by(:email => params[:member][:email])

@@ -11,7 +11,7 @@ end
 
   def create
    @member = Member.new(member_params)
-     if @member.save
+     if @member.valid? && @member.save
        session[:member_id] = @member.id
        redirect_to member_path(@member)
      else
@@ -25,6 +25,10 @@ end
    end
 
    def edit
+   end
+
+   def routines_index
+    @routines = current_member.routines
    end
 
    def update
@@ -54,7 +58,9 @@ end
      params.require(:member).permit(
        :name,
        :email,
-       :password
+       :password,
+       :uid,
+       :image
      )
    end
 end

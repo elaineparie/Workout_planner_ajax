@@ -1,5 +1,7 @@
 <%=link_to "Home", member_path(current_member)%>
 <%=link_to "Logout", logout_url%>
+<br>
+<br>
 <%@exercises.each do |exercise|%>
 <%=link_to exercise.name, exercise_path(exercise)%><br>
 <%end%>
