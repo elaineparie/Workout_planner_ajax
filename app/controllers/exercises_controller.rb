@@ -1,7 +1,7 @@
 
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
-  before_action :redirect, only: [:edit, :update]
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
     @exercises = Exercise.all

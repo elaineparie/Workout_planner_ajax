@@ -2,6 +2,16 @@
 <%=link_to "Home", member_path(current_member)%>
 <%=link_to "Logout", logout_url%>
 <br>
+<br>
+<br>
+<p>All Routines:</p>
+<%@routines.each do |routine|%>
+<%=link_to routine.name, routine_path(routine)%><br>
+<%end%>
+<br>
+<br>
+<br>
+<p>Looking for a specific kind of workout?</p>
 
 <p>Full Body Routines:</p><br>
 <%@routines.full_body_routines.each do |routine|%>

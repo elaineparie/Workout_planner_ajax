@@ -12,7 +12,6 @@ end
 
  get "/login", to: "sessions#new"
  post "/sessions/create", to: "sessions#create"
- #get "/members/:id/routines", to: "members#routines_index"
  get '/auth/facebook/callback' => 'sessions#create'
  get '/privatepolicyfb' => 'static_pages#privatepolicyfb'
  get '/logout' => 'sessions#destroy'
