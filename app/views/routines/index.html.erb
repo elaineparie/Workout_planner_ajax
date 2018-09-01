@@ -1,12 +1,6 @@
-<<<<<<< HEAD
+
 <%=link_to "Home", member_path(current_member)%>
 <%=link_to "Logout", logout_url%>
-<br>
-<%@routines.each do |routine|%>
-=======
-<%=link_to "Home", member_path(current_member)%><br>
-<%=link_to "Logout", logout_url%><br>
-<br>
 <br>
 
 <p>Full Body Routines:</p><br>
@@ -27,6 +21,5 @@
 <%end%>
 <p>Ab Routines:</p><br>
 <%@routines.ab_routines.each do |routine|%>
->>>>>>> 852f88e7b3389cb6d8c41428da53d22d04ba02a2
 <%=link_to routine.name, routine_path(routine)%><br>
 <%end%>

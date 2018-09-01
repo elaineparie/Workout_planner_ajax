@@ -21,14 +21,10 @@ end
 
    def routines_index
      @routines = current_member.routines
-      render 'routines/index'
+     render template: 'routines/index'
    end
 
    def edit
-   end
-
-   def routines_index
-    @routines = current_member.routines
    end
 
    def update

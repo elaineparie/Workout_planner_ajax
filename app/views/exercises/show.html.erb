@@ -1,5 +1,6 @@
 <%=link_to "Home", member_path(current_member)%><br>
 <%=link_to "Logout", logout_url%>
+<br>
 <h3>Your exercise!</h3>
 Name: <%=@exercise.name%><br>
 <br>
@@ -13,3 +14,6 @@ Weight: <%=@exercise.lbs%>
 
 
 <%=link_to "edit exercise", edit_exercise_path%>
+<%= form_tag exercise_path(@exercise), method: "delete" do %>
+  <%= submit_tag "Delete #{@exercise.name}" %>
+<% end %>

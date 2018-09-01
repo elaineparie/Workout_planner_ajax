@@ -12,11 +12,7 @@ end
 
  get "/login", to: "sessions#new"
  post "/sessions/create", to: "sessions#create"
-<<<<<<< HEAD
- get "/members/id/routines", to: "members#routines_index", as: "routines_index"
-=======
- get "/members/:id/routies", to: "members#routines_index"
->>>>>>> 852f88e7b3389cb6d8c41428da53d22d04ba02a2
+ #get "/members/:id/routines", to: "members#routines_index"
  get '/auth/facebook/callback' => 'sessions#create'
  get '/privatepolicyfb' => 'static_pages#privatepolicyfb'
  get '/logout' => 'sessions#destroy'

@@ -1,14 +1,14 @@
 class RoutinesController < ApplicationController
   before_action :set_routine, only: [:show, :edit, :update, :destroy]
-  before_action :redirect, only: [:edit, :update]
+  before_action :redirect, only: [:edit, :update, :destroy]
   def new
     @routine = Routine.new
     @exercises = Exercise.all
   end
 
   def create
-  @routine = Routine.new(routine_params)
-  @routine.member = current_member
+    @routine = Routine.new(routine_params)
+    @routine.member = current_member
     if @routine.save
       @workout = Workout.new(:routine_id => @routine.id, :level => workout_params[:level])
       @workout.save
@@ -30,10 +30,19 @@ class RoutinesController < ApplicationController
   end
 
   def index
+    if params[:member_id]
+      @routines = current_member.routines
+    else
     @routines = Routine.all
+    end
   end
 
   def show
+  end
+
+  def destroy
+  @routine.destroy
+  redirect_to member_path(current_member)
   end
 
   private

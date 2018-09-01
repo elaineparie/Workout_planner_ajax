@@ -21,19 +21,24 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-      if @exercise.save
-        redirect_to exercise_path(@exercise)
-      else
-        render :new
-      end
+    if @exercise.save
+      redirect_to exercise_path(@exercise)
+    else
+      render :new
     end
+  end
 
-    def update
+  def update
     if @exercise.update(exercise_params)
       redirect_to exercise_path(@exercise)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @exercise.destroy
+    redirect_to member_path(current_member)
   end
 
   private
@@ -57,5 +62,4 @@ class ExercisesController < ApplicationController
       :lbs
     )
   end
-
 end
