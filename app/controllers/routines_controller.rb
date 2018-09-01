@@ -1,5 +1,6 @@
 class RoutinesController < ApplicationController
   before_action :set_routine, only: [:show, :edit, :update, :destroy]
+  before_action :redirect, only: [:edit, :update]
   def new
     @routine = Routine.new
     @exercises = Exercise.all
@@ -27,17 +28,18 @@ class RoutinesController < ApplicationController
   end
 
   def index
-    @routines = current_member.routines
+    @routines = Routine.all
   end
 
   def show
   end
 
-  def all_routines
-    @routines = Routine.all
-  end
-
   private
+  def redirect
+    if !current_member.routines.include?(@routine)
+      redirect_to "/routines?error=cannot view that page"
+    end
+  end
 
   def set_routine
     @routine = Routine.find(params[:id])

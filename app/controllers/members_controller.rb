@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy, :index]
+  before_action :redirect
 
 def index
 end
@@ -18,6 +19,11 @@ end
      end
    end
 
+   def routines_index
+     @routines = current_member.routines
+      render 'routines/index'
+   end
+
    def edit
    end
 
@@ -33,6 +39,13 @@ end
    end
 
   private
+
+  def redirect
+    if current_member != @member
+      redirect_to member_path(current_member)
+    end
+  end
+
    def set_member
      @member = Member.find(params[:id])
    end

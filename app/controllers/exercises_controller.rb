@@ -1,6 +1,7 @@
 
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :redirect, only: [:edit, :update]
 
   def index
     @exercises = Exercise.all
@@ -19,7 +20,6 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    binding.pry
     @exercise = Exercise.new(exercise_params)
       if @exercise.save
         redirect_to exercise_path(@exercise)
@@ -40,6 +40,13 @@ class ExercisesController < ApplicationController
 
 
   private
+
+  def redirect
+    if !current_member.exercises.include?(@exercise)
+      redirect_to "/exercises?error=cannot view that page"
+    end
+  end
+
   def set_exercise
     @exercise = Exercise.find(params[:id])
   end
