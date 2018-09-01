@@ -36,9 +36,6 @@ class ExercisesController < ApplicationController
     end
   end
 
-
-
-
   private
 
   def redirect
