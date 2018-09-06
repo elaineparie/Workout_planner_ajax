@@ -1,3 +1,6 @@
 <h1>Edit Routine!</h1>
   <br>
 <%= render 'form' %>
+
+<p>Don't see the exercises you want?</p>
+<%=link_to "Add an exercise here!", new_routine_exercise_path(@routine)%>

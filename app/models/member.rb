@@ -4,4 +4,9 @@ class Member < ApplicationRecord
   validates :name, presence: true
   validates(:password, { :length => { :minimum => 8 } })
   validates :email, uniqueness: true
+
+  def self.most_routines
+  Member.order("routines_count")
+  end
+
 end

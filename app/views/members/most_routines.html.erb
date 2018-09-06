@@ -1,0 +1,8 @@
+
+<%@members.each do |member| %>
+<%= member.name %><br>
+<% member.routines.each do |routine| %><br>
+<%= link_to routine.name, routine_path(routine) %><br>
+<br>
+<%end%>
+<%end%>

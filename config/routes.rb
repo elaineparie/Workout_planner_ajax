@@ -15,4 +15,5 @@ end
  get '/auth/facebook/callback' => 'sessions#create'
  get '/privatepolicyfb' => 'static_pages#privatepolicyfb'
  get '/logout' => 'sessions#destroy'
+ get '/most_routines' => 'members#most_routines'
 end

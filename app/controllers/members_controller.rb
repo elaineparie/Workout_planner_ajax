@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy, :index]
-  before_action :redirect
+  before_action :redirect, except: [:most_routines]
 
 def index
 end
@@ -25,6 +25,10 @@ end
    end
 
    def edit
+   end
+
+   def most_routines
+    @members = Member.all.sort_by{|member| member.routines.length}.reverse!
    end
 
    def update
