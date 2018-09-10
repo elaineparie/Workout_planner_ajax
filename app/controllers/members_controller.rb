@@ -28,7 +28,7 @@ end
    end
 
    def most_routines
-    @members = Member.all.sort_by{|member| member.routines.length}.reverse!
+    @members = Member.most_routines
    end
 
    def update

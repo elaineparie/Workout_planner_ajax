@@ -9,4 +9,8 @@ class Member < ApplicationRecord
   Member.order("routines_count")
   end
 
+  def self.most_routines
+    Member.all.sort_by{|member| member.routines.length}.reverse!
+  end
+
 end
