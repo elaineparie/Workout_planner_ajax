@@ -6,12 +6,10 @@ $(".show_routines").on("click", function(e){
      routines = json.routines
      var routinesList = ""
      routines.forEach(function(routine){
-       routinesList += '<li>' + routine.name + '</li>'
+       routinesList += '<li>' + '<a href=/routines/' + routine.id + '>' + routine.name + '</a>' + '</li>'
      })
      $(".routines ol").append(routinesList)
    })
    });
-
-
 
 })
