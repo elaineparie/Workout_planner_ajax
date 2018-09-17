@@ -32,6 +32,7 @@ class RoutinesController < ApplicationController
   def index
     if params[:member_id]
       @routines = current_member.routines
+      format.json {render json: @routines}
     else
     @routines = Routine.all
     end

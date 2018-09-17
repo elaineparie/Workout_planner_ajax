@@ -19,10 +19,10 @@ end
      end
    end
 
-   def routines_index
-     @routines = current_member.routines
-     render template: 'routines/index'
-   end
+   # def routines_index
+     # @routines = current_member.routines
+     # render template: 'routines/index'
+   # end
 
    def edit
    end

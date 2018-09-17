@@ -1,9 +1,12 @@
 <%=link_to "Home", member_path(current_member)%><br>
 <%=link_to "Logout", logout_url%>
 <br>
-<h1>Hello, <%=@member.name%></h1>
+<h1>Hello, <%=@member.name%></h1><br>
 
 <p>Are you ready to begin your workout?</p>
+<p>
+  <%= link_to "Show My Routines", member_routines_path(@member), :class => "show_routines"%>
+</p>
 
 <%=link_to "Make a new routine!", new_routine_path%>
 <br>
