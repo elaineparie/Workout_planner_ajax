@@ -1,6 +1,17 @@
 $(function(){
-$("a.show_routines").on("click", function(e){
+$(".show_routines").on("click", function(e){
   e.preventDefault();
-  alert("You clicked!!!!!")
-})
+  var id = $(this).data("id");
+   $.get("/members/" + id + ".json", function(json) {
+     routines = json.routines
+     var routinesList = ""
+     routines.forEach(function(routine){
+       routinesList += '<li>' + routine.name + '</li>'
+     })
+     $(".routines ol").append(routinesList)
+   })
+   });
+
+
+
 })

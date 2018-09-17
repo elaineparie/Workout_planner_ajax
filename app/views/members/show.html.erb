@@ -5,9 +5,11 @@
 
 <p>Are you ready to begin your workout?</p>
 <p>
-  <%= link_to "Show My Routines", member_routines_path(@member), :class => "show_routines"%>
+  <!-- <%= link_to "Show My Routines", member_routines_path(@member), :class => "show_routines"%> -->
+    <button class="show_routines" data-id="<%= @member.id %>">Show my routines</button>
 </p>
 
+<div class="routines"><ol></ol></div>
 <%=link_to "Make a new routine!", new_routine_path%>
 <br>
 <%=link_to "View your routines!", member_routines_path(current_member)%>

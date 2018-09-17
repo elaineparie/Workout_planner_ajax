@@ -30,15 +30,22 @@ class RoutinesController < ApplicationController
   end
 
   def index
-    if params[:member_id]
-      @routines = current_member.routines
-      format.json {render json: @routines}
-    else
-    @routines = Routine.all
-    end
+      if params[:member_id]
+        @routines = current_member.routines
+      else
+        @routines = Routine.all
+      end
+      respond_to do |format|
+           format.html { render :show }
+           format.json { render json: @routine}
+         end
   end
 
   def show
+    respond_to do |format|
+         format.html { render :show }
+         format.json { render json: @routine}
+       end
   end
 
   def destroy

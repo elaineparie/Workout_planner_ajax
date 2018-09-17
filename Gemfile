@@ -70,3 +70,5 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 
 gem 'jquery-rails'
+
+gem 'active_model_serializers'
