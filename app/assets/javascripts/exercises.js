@@ -1,3 +1,14 @@
+function Exercise(name, sets, reps, lbs){
+  this.name = name
+  this.sets = sets
+  this.reps = reps
+  this.lbs = lbs
+
+  Exercise.prototype.format = function() {
+ return `Name: ${this.name}, sets: ${this.sets}, reps: ${this.reps}, weight: ${this.lbs}`
+ }
+}
+
 $(document).on("turbolinks:load", function () {
   $('.new_exercise').submit(function(event) {
     event.preventDefault();
@@ -7,11 +18,9 @@ $(document).on("turbolinks:load", function () {
       $("#exercise_sets").val("")
       $("#exercise_reps").val("")
       $("#exercise_lbs").val("")
-      var exercise = data;
-       $("#exerciseName").text("Name: " + exercise["name"]);
-       $("#exerciseSet").text("Sets: " + exercise["sets"]);
-       $("#exerciseRep").text("Reps: " + exercise["reps"]);
-       $("#exerciseWeight").text("Weight: " + exercise["lbs"]);
-       });
+    let exercise = new Exercise(data["name"], data["sets"], data["reps"], data["lbs"])
+    let formattedExercise = exercise.format()
+    $("#exerciseName").append(formattedExercise)
   });
 });
+})

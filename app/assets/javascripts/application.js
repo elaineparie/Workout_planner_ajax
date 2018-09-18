@@ -18,3 +18,4 @@
 //= require_tree .
 //= require members
 //= require exercises
+//= require next_routine 
