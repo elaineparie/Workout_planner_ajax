@@ -19,3 +19,28 @@
 <%= form_tag routine_path(@routine), method: "delete" do %>
   <%= submit_tag "Delete #{@routine.name}" %>
 <% end %>
+<br>
+<br>
+
+<p>Add Exercises!</p>
+
+<%= form_for @exercise do |f| %>
+<%= f.label :name %>
+<br>
+<%= f.text_field :name %>
+<br>
+<%= f.label :sets %>
+<br>
+<%= f.text_field :sets %>
+<br>
+<%= f.label :reps %>
+<br>
+<%= f.text_field :reps %>
+<br>
+<%= f.label :lbs %>
+<br>
+<%= f.text_field :lbs %>
+<br>
+<%= f.submit %>
+
+<% end %>

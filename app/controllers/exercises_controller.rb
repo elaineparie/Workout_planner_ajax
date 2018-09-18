@@ -22,7 +22,10 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to exercise_path(@exercise)
+      respond_to do |format|
+           format.html { redirect_to exercise_path(@exercise) }
+           format.json { render json: @exercise}
+      end
     else
       render :new
     end
