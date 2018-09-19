@@ -21,6 +21,7 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
+    @exercise.member = current_member
     if @exercise.save
       @workout = Workout.new
       @workout.exercise_id = @exercise.id

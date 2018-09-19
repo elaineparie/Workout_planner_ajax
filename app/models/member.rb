@@ -1,6 +1,7 @@
 class Member < ApplicationRecord
   has_secure_password
   has_many :routines
+  has_many :exercises
   validates :name, presence: true
   validates(:password, { :length => { :minimum => 8 } })
   validates :email, uniqueness: true
