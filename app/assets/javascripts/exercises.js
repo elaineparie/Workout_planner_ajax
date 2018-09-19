@@ -9,10 +9,6 @@ function Exercise(name, sets, reps, lbs){
  }
 }
 
-function Workout(routine_id, exercise_id){
-  this.routine_id = routine_id
-  this.exercise_id = exercise_id
-}
 
 $(document).on("turbolinks:load", function () {
   $('.new_exercise').submit(function(event) {
@@ -24,7 +20,6 @@ $(document).on("turbolinks:load", function () {
       $("#exercise_reps").val("")
       $("#exercise_lbs").val("")
     let exercise = new Exercise(data["name"], data["sets"], data["reps"], data["lbs"])
-    let workout = new Workout(parseInt($(".js-next").attr("data-id")), data["id"])
     let formattedExercise = exercise.format()
     $("#exerciseName").append(formattedExercise)
   });
