@@ -25,7 +25,6 @@ $(document).on("turbolinks:load", function () {
       $("#exercise_lbs").val("")
     let exercise = new Exercise(data["name"], data["sets"], data["reps"], data["lbs"])
     let workout = new Workout(parseInt($(".js-next").attr("data-id")), data["id"])
-    debugger
     let formattedExercise = exercise.format()
     $("#exerciseName").append(formattedExercise)
   });

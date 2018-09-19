@@ -50,6 +50,8 @@
 <br>
 <%= f.text_field :lbs %>
 <br>
+<%= f.hidden_field :routine_id, :value => @routine.id %>
+<br>
 <%= f.submit %>
 
 <% end %>

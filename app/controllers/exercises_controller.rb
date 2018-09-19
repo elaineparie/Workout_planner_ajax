@@ -22,6 +22,10 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
+      @workout = Workout.new
+      @workout.exercise_id = @exercise.id
+      @workout.routine_id = params["exercise"]["routine_id"].to_i
+      @workout.save
       respond_to do |format|
            format.html { redirect_to exercise_path(@exercise) }
            format.json { render json: @exercise}
