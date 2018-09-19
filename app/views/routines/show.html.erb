@@ -28,10 +28,8 @@
 
 <p>Add Exercises!</p>
 
-<p id="exerciseName"></p>
-<p id="exerciseSet"></p>
-<p id="exerciseRep"></p>
-<p id="exerciseWeight"></p>
+<ul id="exercise_list">
+</ul>
 
 <%= form_for @exercise do |f| %>
 <%= f.label :name %>
@@ -52,6 +50,6 @@
 <br>
 <%= f.hidden_field :routine_id, :value => @routine.id %>
 <br>
-<%= f.submit %>
+<%= f.submit 'submit', :class => "submit_button" %>
 
 <% end %>

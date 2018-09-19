@@ -19,9 +19,13 @@ $(document).on("turbolinks:load", function () {
       $("#exercise_sets").val("")
       $("#exercise_reps").val("")
       $("#exercise_lbs").val("")
+      $(".submit_button").prop('disabled', false)
     let exercise = new Exercise(data["name"], data["sets"], data["reps"], data["lbs"])
     let formattedExercise = exercise.format()
-    $("#exerciseName").append(formattedExercise)
+    var exerciseList = ""
+        exerciseList += '<li>' + formattedExercise + '</li>'
+        debugger
+    $("#exercise_list").append(exerciseList)
   });
 });
 })
