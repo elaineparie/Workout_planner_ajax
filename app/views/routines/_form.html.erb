@@ -31,7 +31,6 @@
 </select>
 <br>
   <br>
-  <%= f.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %><br>
 
   <%= f.label "What level workout is this?" %><br>
   <select name="workout[level]" id="workout_level"><option value="">Select workout level</option>
