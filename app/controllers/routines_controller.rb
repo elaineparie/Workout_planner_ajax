@@ -33,13 +33,13 @@ class RoutinesController < ApplicationController
       if params[:member_id]
         @routines = current_member.routines
         respond_to do |format|
-          format.html { render :show }
+          format.html { render :index }
           format.json { render json: @routines}
         end
       else
         @routines = Routine.all
         respond_to do |format|
-          format.html { render :show }
+          format.html { render :index }
           format.json { render json: @routines}
         end
       end

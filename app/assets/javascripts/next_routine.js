@@ -5,6 +5,7 @@ $(function () {
     $.get("/routines/" + nextId + ".json", function(data) {
       $(".routineName").text(data["name"]);
       $(".routineKind").text(data["kind"]);
+      $(".delete-routine").val(data["name"]);
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });

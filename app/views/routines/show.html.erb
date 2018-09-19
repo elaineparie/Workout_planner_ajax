@@ -21,7 +21,7 @@
 <%=link_to "Edit Routine", edit_routine_path(@routine)%>
 
 <%= form_tag routine_path(@routine), method: "delete" do %>
-  <%= submit_tag "Delete #{@routine.name}" %>
+  <%= submit_tag "Delete #{@routine.name}", class: "delete-routine" %>
 <% end %>
 <br>
 <br>
