@@ -3,22 +3,26 @@
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault();
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    var nextId = parseInt($(".js-next").attr("data-id"));
     var http = $.ajax({
         type:"HEAD",
-        url: "/routines/" + nextId + ".json",
+        url: "/routines.json",
         async: false
     })
-    if(http.status == 200) {$.get("/routines/" + nextId + ".json", function(data) {
-      $(".routineName").text(data["name"]);
-      $(".routineKind").text(data["kind"]);
-      $(".delete-routine").val(data["name"]);
+      $.get("/routines.json", function(data) {
+      var routineIndex = data.map(function(routine){return routine.id}).indexOf(nextId)
+      var nextIndex = routineIndex + 1
+      var nextRoutine = data[nextIndex]
+      var nextId = nextRoutine.id
+      var routine = data[nextIndex]
+      $(".routineName").text(routine["name"]);
+      $(".routineKind").text(routine["kind"]);
+      $(".delete-routine").val(routine["name"]);
+      debugger
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
+      $(".js-next").attr("data-id", nextId);
     });
-  }
-  else {
-    alert("The page you are trying to reach is not available.")
-  }
+
+
   });
 });
