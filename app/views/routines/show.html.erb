@@ -1,6 +1,8 @@
 <%=link_to "Home", member_path(current_member)%>
 <%=link_to "Logout", logout_url%><br>
-<a href="#" class="js-next" data-id="<%=@routine.id%>">Next Routine</a>
+<a href="#" class="js-next" data-id="<%=@routine.id%>" data-member-id="<%=current_member.id%>">Next Routine</a>
+<br>
+<a href="#" class="js-prev" data-id="<%=@routine.id%>">Previous Routine</a>
 
 <h1 class="routineName"><%= @routine.name %></h1>
 <p class="routineKind"><%= @routine.kind %></p>
