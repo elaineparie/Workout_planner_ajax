@@ -1,4 +1,4 @@
-$(function(){
+document.addEventListener("turbolinks:load", function(){
 $(".show_routines").on("click", function(e){
   e.preventDefault();
   var id = $(this).data("id");

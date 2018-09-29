@@ -1,6 +1,5 @@
 
-
-$(function () {
+document.addEventListener("turbolinks:load", function() {
   var memberId = parseInt($(".js-next").attr("data-member-id"));
   var prevId = parseInt($(".js-prev").attr("data-id"));
   var http = $.ajax({
@@ -28,8 +27,8 @@ $(function () {
       $.get("/routines.json", function(data) {
       var nextId = parseInt($(".js-next").attr("data-id"));
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(nextId)
-      // debugger to see why prev is not showing up
-      if (routineIndex == 0){
+        // debugger //to see why prev is not showing up
+      if (routineIndex !== 0){
         $(".js-prev").show()
       }
       if (routineIndex == data.length - 1){
@@ -68,23 +67,25 @@ $(function () {
       if (routineIndex == data.length - 1){
         $(".js-next").show()
       }
-      if (routineIndex == 0){
-        $(".js-prev").hide()
-      } else {
+      if (routineIndex !== 0){
         $(".js-prev").show()
       var prevIndex = routineIndex - 1
       var prevRoutine = data[prevIndex]
+      debugger
       var prevId = prevRoutine.id
       var routine = data[prevIndex]
       $(".routineName").text(routine["name"]);
       $(".routineKind").text(routine["kind"]);
       $(".delete-routine").val(routine["name"]);
       $(".js-prev").attr("data-id", prevId);
-    }
+    } else {
+      $(".js-prev").hide()}
   })
   })
 
-});
+})
+
+
 
 
 function toggleNextLink(routineIndex, data){

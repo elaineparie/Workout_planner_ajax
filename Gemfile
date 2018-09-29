@@ -72,3 +72,5 @@ gem 'dotenv-rails'
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
+
+gem 'jquery-turbolinks'

@@ -9,8 +9,7 @@ function Exercise(name, sets, reps, lbs){
  }
 }
 
-
-$(document).on("turbolinks:load", function () {
+document.addEventListener("turbolinks:load", function () {
   $('.new_exercise').submit(function(event) {
     event.preventDefault();
     var values = $(this).serialize();
