@@ -19,17 +19,18 @@ document.addEventListener("turbolinks:load", function() {
 
   $(".js-next").on("click", function(e) {
     e.preventDefault();
+    var memberId = parseInt($(".js-next").attr("data-member-id"));
     var http = $.ajax({
         type:"HEAD",
-        url: "/routines.json",
+        url: `/members/${memberId}/routines.json`,
         async: false
     })
-      $.get("/routines.json", function(data) {
+      $.get(`/members/${memberId}/routines.json`, function(data) {
       var nextId = parseInt($(".js-next").attr("data-id"));
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(nextId)
         // debugger //to see why prev is not showing up
-      if (routineIndex !== 0){
-        $(".js-prev").show()
+      if (routineIndex == 0){
+        $(".js-next").show()
       }
       if (routineIndex == data.length - 1){
         $(".js-next").hide()
@@ -43,6 +44,12 @@ document.addEventListener("turbolinks:load", function() {
       $(".routineName").text(routine["name"]);
       $(".routineKind").text(routine["kind"]);
       $(".delete-routine").val(routine["name"]);
+      debugger
+      $(".exerciseList").append(
+        routine.exercises.forEach(function(exercise){
+          `<li>${exercise}</li>`
+        })
+      )
       // re-set the id to current on the link
       $(".js-next").attr("data-id", nextId);
     }
@@ -64,20 +71,23 @@ document.addEventListener("turbolinks:load", function() {
         var prevId = parseInt($(".js-prev").attr("data-id"));
       // find the index of prevId in the routines index
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(prevId)
-      if (routineIndex == data.length - 1){
+      // something failing below
+      if (!(data.length == routineIndex)){
         $(".js-next").show()
       }
-      if (routineIndex !== 0){
+      if (routineIndex == 0){
+        $(".js-prev").hide()
+      }
+      if (routineIndex > 0){
         $(".js-prev").show()
-      var prevIndex = routineIndex - 1
-      var prevRoutine = data[prevIndex]
-      debugger
-      var prevId = prevRoutine.id
-      var routine = data[prevIndex]
-      $(".routineName").text(routine["name"]);
-      $(".routineKind").text(routine["kind"]);
-      $(".delete-routine").val(routine["name"]);
-      $(".js-prev").attr("data-id", prevId);
+        var prevIndex = routineIndex - 1
+        var prevRoutine = data[prevIndex]
+        var prevId = prevRoutine.id
+        var routine = data[prevIndex]
+        $(".routineName").text(routine["name"]);
+        $(".routineKind").text(routine["kind"]);
+        $(".delete-routine").val(routine["name"]);
+        $(".js-prev").attr("data-id", prevId);
     } else {
       $(".js-prev").hide()}
   })

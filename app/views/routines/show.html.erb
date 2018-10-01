@@ -8,7 +8,7 @@
 <p class="routineKind"><%= @routine.kind %></p>
 
 
-<ol>
+<ol class="exerciseList">
 <%@routine.exercises.each do |exercise|%>
 <li><%=link_to exercise.name, routine_exercise_url(@routine, exercise)%></li><br>
 <p>sets: <%=exercise.sets%></p>
