@@ -27,6 +27,7 @@ document.addEventListener("turbolinks:load", function() {
     })
       $.get(`/members/${memberId}/routines.json`, function(data) {
       var nextId = parseInt($(".js-next").attr("data-id"));
+      debugger
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(nextId)
         // debugger //to see why prev is not showing up
          // debugger
@@ -82,7 +83,7 @@ document.addEventListener("turbolinks:load", function() {
       // if (routineIndex == 0){
       //   $(".js-prev").hide()
       // }
-      if (routineIndex >= 0){
+      if (routineIndex > 0){
         $(".js-prev").show()
         var prevIndex = (routineIndex - 1)
         // if (prevIndex < 0) {

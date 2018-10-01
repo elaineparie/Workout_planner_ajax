@@ -23,7 +23,6 @@ document.addEventListener("turbolinks:load", function () {
     let formattedExercise = exercise.format()
     var exerciseList = ""
         exerciseList += '<li>' + formattedExercise + '</li>'
-        debugger
     $("#exercise_list").append(exerciseList)
   });
 });
