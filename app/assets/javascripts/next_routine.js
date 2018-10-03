@@ -43,8 +43,11 @@ document.addEventListener("turbolinks:load", function() {
         $(".js-next").show()
         // debugger
       var nextIndex = routineIndex + 1
+      var prevIndex = routineIndex - 1
       var nextRoutine = data[nextIndex]
+      var prevRoutine = data[prevIndex]
       var nextId = nextRoutine.id
+      var prevId = prevRoutine.id
       var routine = data[nextIndex]
       $(".routineName").text(routine["name"]);
       $(".routineKind").text(routine["kind"]);
@@ -56,6 +59,7 @@ document.addEventListener("turbolinks:load", function() {
       // )
       // re-set the id to current on the link
       $(".js-next").attr("data-id", nextId);
+      $(".js-prev").attr("data-id", prevId);
     }
     });
 
@@ -73,17 +77,17 @@ document.addEventListener("turbolinks:load", function() {
     })
       $.get(`/members/${memberId}/routines.json`, function(data) {
         var prevId = parseInt($(".js-prev").attr("data-id"));
-        debugger
+        // debugger
       // find the index of prevId in the routines index
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(prevId)
       // something failing below
-      if (!(data.length == routineIndex)){
+      if (!(data.length - 1 == routineIndex)){
         $(".js-next").show()
       }
       // if (routineIndex == 0){
       //   $(".js-prev").hide()
       // }
-      if (routineIndex > 0){
+      if (routineIndex >= 0){
         $(".js-prev").show()
         var prevIndex = (routineIndex - 1)
         // if (prevIndex < 0) {
