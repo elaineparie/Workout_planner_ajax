@@ -8,10 +8,7 @@ document.addEventListener("turbolinks:load", function() {
       async: false
   })
     $.get(`/members/${memberId}/routines.json`, function(data) {
-    // find the index of prevId in the routines index
     var routineIndex = data.map(function(routine){return routine.id}).indexOf(prevId)
-    togglePrevLink(routineIndex)
-    toggleNextLink(routineIndex, data)
 })
 
 
@@ -27,10 +24,7 @@ document.addEventListener("turbolinks:load", function() {
     })
       $.get(`/members/${memberId}/routines.json`, function(data) {
       var nextId = parseInt($(".js-next").attr("data-id"));
-      debugger
       var routineIndex = data.map(function(routine){return routine.id}).indexOf(nextId)
-        // debugger //to see why prev is not showing up
-         // debugger
       if (routineIndex == 0){
         $(".js-next").show()
       }
@@ -41,9 +35,9 @@ document.addEventListener("turbolinks:load", function() {
         $(".js-next").hide()
       } else {
         $(".js-next").show()
-        // debugger
       var nextIndex = routineIndex + 1
-      var prevIndex = routineIndex - 1
+      var prevIndex = routineIndex
+
       var nextRoutine = data[nextIndex]
       var prevRoutine = data[prevIndex]
       var nextId = nextRoutine.id
@@ -51,89 +45,20 @@ document.addEventListener("turbolinks:load", function() {
       var routine = data[nextIndex]
       $(".routineName").text(routine["name"]);
       $(".routineKind").text(routine["kind"]);
-      $(".delete-routine").val(routine["name"]);
-      // $(".exerciseList").append(
-      //   routine.exercises.forEach(function(exercise){
-      //     `<li>${exercise}</li>`
-      //   })
-      // )
-      // re-set the id to current on the link
+      $(".delete-routine").val("Delete " + routine["name"]);
+      debugger
+      routine["exercises"].forEach (function(exercise) {
+          $("#exerciseName").text(exercise["name"])
+          $("#link").html(`<a href=/routines/${routine.id}/exercises/${exercise.id}>View Exercise</a>`)
+      })
+
+
+
       $(".js-next").attr("data-id", nextId);
-      $(".js-prev").attr("data-id", prevId);
     }
     });
 
 
   });
 
-
-  $(".js-prev").on("click", function(e) {
-    e.preventDefault();
-    var memberId = parseInt($(".js-next").attr("data-member-id"));
-    var http = $.ajax({
-        type:"HEAD",
-        url: `/members/${memberId}/routines.json`,
-        async: false
-    })
-      $.get(`/members/${memberId}/routines.json`, function(data) {
-        var prevId = parseInt($(".js-prev").attr("data-id"));
-        // debugger
-      // find the index of prevId in the routines index
-      var routineIndex = data.map(function(routine){return routine.id}).indexOf(prevId)
-      // something failing below
-      if (!(data.length - 1 == routineIndex)){
-        $(".js-next").show()
-      }
-      // if (routineIndex == 0){
-      //   $(".js-prev").hide()
-      // }
-      if (routineIndex >= 0){
-        $(".js-prev").show()
-        var prevIndex = (routineIndex - 1)
-        // if (prevIndex < 0) {
-        //   prevIndex = prevIndex * -1
-        // }
-        var prevRoutine = data[prevIndex]
-        var prevId = prevRoutine.id
-        var routine = data[prevIndex]
-        $(".routineName").text(routine["name"]);
-        $(".routineKind").text(routine["kind"]);
-        $(".delete-routine").val(routine["name"]);
-        $(".js-prev").attr("data-id", prevId);
-    }
-    //   if (routineIndex > 0){
-    //     $(".js-prev").show()
-    //     var prevIndex = routineIndex - 1
-    //     var prevRoutine = data[prevIndex]
-    //     var prevId = prevRoutine.id
-    //     var routine = data[prevIndex]
-    //     $(".routineName").text(routine["name"]);
-    //     $(".routineKind").text(routine["kind"]);
-    //     $(".delete-routine").val(routine["name"]);
-    //     $(".js-prev").attr("data-id", prevId);
-    // } else {
-    //   $(".js-prev").hide()}
-  })
-  })
-
 })
-
-
-
-
-function toggleNextLink(routineIndex, data){
-  if (routineIndex == data.length - 1){
-    $(".js-next").hide()
-  } else {
-    $(".js-next").show()
-}
-}
-
-
-function togglePrevLink(routineIndex){
-  if (routineIndex == 0){
-    $(".js-prev").hide()
-  } else {
-    $(".js-prev").show()
-  }
-}

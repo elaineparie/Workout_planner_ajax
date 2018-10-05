@@ -2,19 +2,20 @@
 <%=link_to "Logout", logout_url%><br>
 <a href="#" class="js-next" data-id="<%=@routine.id%>" data-member-id="<%=current_member.id%>">Next Routine</a>
 <br>
-<a href="#" class="js-prev" data-id="<%=@routine.id%>">Previous Routine</a>
 
 <h1 class="routineName"><%= @routine.name %></h1>
 <p class="routineKind"><%= @routine.kind %></p>
 
 
 <ol class="exerciseList">
+
 <%@routine.exercises.each do |exercise|%>
-<li><%=link_to exercise.name, routine_exercise_url(@routine, exercise)%></li><br>
-<p>sets: <%=exercise.sets%></p>
-<p>reps: <%=exercise.reps%></p>
+<li id="exerciseName"><%=exercise.name%></li><br>
+<p id="link"><%=link_to "View Exercise", routine_exercise_url(@routine, exercise)%></p>
+<p id="exerciseSets">sets: <%=exercise.sets%></p>
+<p id="exerciseReps">reps: <%=exercise.reps%></p>
 <%if exercise.lbs != nil%>
-<p>weight: <%=exercise.lbs%></p>
+<p id="exerciseLbs">weight: <%=exercise.lbs%></p>
 <%end%>
 <%end%>
 </ol>
