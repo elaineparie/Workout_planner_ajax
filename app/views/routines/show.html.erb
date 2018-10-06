@@ -4,22 +4,44 @@
 <br>
 
 <h1 class="routineName"><%= @routine.name %></h1>
-<p class="routineKind"><%= @routine.kind %></p>
+<p class="routineKind">Exercise Type: <%= @routine.kind %></p>
 
 
-<ol class="exerciseList">
 
+
+
+<!-- <li class="exerciseName"></li><br>
+<li class="link"></li>
+<li class="exerciseSets"></li>
+<li class="exerciseReps"></li>
+<li class="exerciseLbs"></li>
+
+</ul>
+<br> -->
+<div id="exerciseContainer2">
 <%@routine.exercises.each do |exercise|%>
-<li id="exerciseName"><%=exercise.name%></li><br>
-<p id="link"><%=link_to "View Exercise", routine_exercise_url(@routine, exercise)%></p>
-<p id="exerciseSets">sets: <%=exercise.sets%></p>
-<p id="exerciseReps">reps: <%=exercise.reps%></p>
+<div class="exerciseList2">
+<p class="exerciseName2"><%=exercise.name%>:</p>
+<p class="link"><%=link_to "View Exercise", routine_exercise_url(@routine, exercise)%></p>
+<p class="exerciseSets2">sets: <%=exercise.sets%></p>
+<p class="exerciseReps2">reps: <%=exercise.reps%></p>
 <%if exercise.lbs != nil%>
-<p id="exerciseLbs">weight: <%=exercise.lbs%></p>
+<p class="exerciseLbs2">weight: <%=exercise.lbs%></p>
 <%end%>
-<%end%>
-</ol>
 <br>
+</div>
+<%end%>
+</div>
+
+<div id="exerciseContainer">
+  <div class="exerciseList">
+    <p class="exerciseName"></p><br>
+    <p class="link"></p>
+    <p class="exerciseSets"></p>
+    <p class="exerciseReps"></p>
+    <p class="exerciseLbs"></p>
+  </div>
+</div>
 
 <%=link_to "Edit Routine", edit_routine_path(@routine)%>
 
