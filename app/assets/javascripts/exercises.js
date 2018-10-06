@@ -1,4 +1,5 @@
 function Exercise(name, sets, reps, lbs){
+  this.id = id
   this.name = name
   this.sets = sets
   this.reps = reps
@@ -19,7 +20,7 @@ document.addEventListener("turbolinks:load", function () {
       $("#exercise_reps").val("")
       $("#exercise_lbs").val("")
       $(".submit_button").prop('disabled', false)
-    let exercise = new Exercise(data["name"], data["sets"], data["reps"], data["lbs"])
+    let exercise = new Exercise(data["id"], data["name"], data["sets"], data["reps"], data["lbs"])
     let formattedExercise = exercise.format()
     var exerciseList = ""
         exerciseList += '<li>' + formattedExercise + '</li>'
