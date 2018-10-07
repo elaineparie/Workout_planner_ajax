@@ -7,17 +7,6 @@
 <p class="routineKind">Exercise Type: <%= @routine.kind %></p>
 
 
-
-
-
-<!-- <li class="exerciseName"></li><br>
-<li class="link"></li>
-<li class="exerciseSets"></li>
-<li class="exerciseReps"></li>
-<li class="exerciseLbs"></li>
-
-</ul>
-<br> -->
 <div id="exerciseContainer2">
 <%@routine.exercises.each do |exercise|%>
 <div class="exerciseList2">
@@ -44,6 +33,8 @@
 </div>
 
 <%=link_to "Edit Routine", edit_routine_path(@routine)%>
+
+<div id="delete_routine"></div> 
 
 <%= form_tag routine_path(@routine), method: "delete" do %>
   <%= submit_tag "Delete #{@routine.name}", class: "delete-routine" %>

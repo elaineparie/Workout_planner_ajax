@@ -23,7 +23,7 @@ document.addEventListener("turbolinks:load", function () {
     let exercise = new Exercise(data["id"], data["name"], data["sets"], data["reps"], data["lbs"])
     let formattedExercise = exercise.format()
     var exerciseList = ""
-        exerciseList += '<li>' + formattedExercise + '</li>'
+        exerciseList += '<p>' + formattedExercise + '</p>'
     $("#exercise_list").append(exerciseList)
   });
 });
