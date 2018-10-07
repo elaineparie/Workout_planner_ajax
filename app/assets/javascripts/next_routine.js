@@ -93,6 +93,7 @@ function Exercise(id, name, sets, reps, lbs, routine_id){
       $(".routineKind").text(routine["kind"]);
       $(".delete-routine").val("Delete " + routine["name"]);
       // clear exerciseContainer
+      $("#exercise_list").hide()
       $('#exerciseContainer2').hide()
       $(".js-next").attr("data-id", nextId);
           $("#exerciseContainer").empty()
