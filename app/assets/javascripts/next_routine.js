@@ -24,24 +24,24 @@ function Exercise(id, name, sets, reps, lbs, routine_id){
  }
 }
 
-
 function Routine(id, name){
   this.id = id
   this.name = name
 
-  Routine.prototype.delete_routine = function() {
-    html = '<div id="delete_form">'
-    html += '<form action="/routines/' + this.id + '"accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="yHiJgpxUFFkg89i1FDsFDnmrKC6QlbzZiVe4UqQFsnXYb8Pd5BrPNfAv4U6vkt1Vqvv+pToOS0TKJ2stskUvyg==">'
-    html += '<input type="submit" name="commit" value="Delete ' + this.name + '" class="delete-routine" data-disable-with="Delete"' + this.name + '></form>'
-    html += '</div>'
+  Routine.prototype.edit_routine = function() {
+    html = '<a href="/routines/' + this.id + '/edit">Edit Routine</a>'
     return html
   }
 }
 
-  const updateDelete = (routine) =>  {
+  const updateDeleteButton = (routine) =>  {
     $(".delete-routine").val("Delete " + routine["name"]);
-    var routineDelete = new Routine(routine["id"], routine["name"])
-    $("#delete_routine").html(routineDelete.delete_routine())
+  }
+
+  const updateDeleteForm = (routine) => {
+    routine = new Routine (routine.id)
+     $('#delete_form').attr('actions',`/routines/${routine.id}`)
+     $('#delete_form').attr('action',`/routines/${routine.id}`)
   }
 
   const updateRoutineAttribs = (routine) =>  {$(".routineName").text(routine["name"]);
@@ -59,6 +59,9 @@ function Routine(id, name){
     $("#exercise_routine_id").replaceWith(exercise.exercise_routine_id())
     routine["exercises"].push(exercise)
   }
+
+  const updateEdit = (routine) =>  {routine = new Routine(routine.id)
+  $("#edit_routine").html(routine.edit_routine())}
 
 
     document.addEventListener("turbolinks:load", function() {
@@ -88,9 +91,11 @@ function Routine(id, name){
             $(".js-next").attr("data-id", nextId);
 
              updateRoutineAttribs(routine)
-             updateDelete(routine)
+             updateDeleteButton(routine)
              updateExercises(routine)
              updateExerciseForm(routine, data)
+             updateEdit(routine)
+             updateDeleteForm(routine)
 
       }
     });

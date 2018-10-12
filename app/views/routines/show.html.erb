@@ -9,34 +9,26 @@
 
 <div id="exerciseContainer">
 <%@routine.exercises.each do |exercise|%>
-  <div class="exerciseList2">
-    <p class="exerciseName2"><%=exercise.name%>:</p>
-    <p class="link"><%=link_to "View Exercise", routine_exercise_url(@routine, exercise)%></p>
-    <p class="exerciseSets2">sets: <%=exercise.sets%></p>
-    <p class="exerciseReps2">reps: <%=exercise.reps%></p>
-    <%if exercise.lbs != nil%>
-      <p class="exerciseLbs2">weight: <%=exercise.lbs%></p>
-    <%end%>
-    <br>
-  </div>
-<%end%>
-</div>
-
-<div id="exerciseContainer">
   <div class="exerciseList">
-    <p class="exerciseName"></p><br>
-    <p class="link"></p>
-    <p class="exerciseSets"></p>
-    <p class="exerciseReps"></p>
-    <p class="exerciseLbs"></p>
-  </div>
+    <p class="exerciseName"><%=exercise.name%>:</p>
+    <p class="link"><%=link_to "View Exercise", routine_exercise_url(@routine, exercise)%></p>
+    <p class="exerciseSets">sets: <%=exercise.sets%></p>
+    <p class="exerciseReps">reps: <%=exercise.reps%></p>
+    <%if exercise.lbs != nil%>
+      <p class="exerciseLbs">weight: <%=exercise.lbs%></p>
+    <%end%>
+        <br>
+    </div>
+  <%end%>
 </div>
 
+<div id="edit_routine">
 <%=link_to "Edit Routine", edit_routine_path(@routine)%>
+</div>
 
 <div id="delete_routine">
 
-<%= form_tag routine_path(@routine), method: "delete" do %>
+<%= form_tag routine_path(@routine), :id => 'delete_form', method: "delete" do %>
   <%= submit_tag "Delete #{@routine.name}", class: "delete-routine" %>
 <% end %>
 </div>
